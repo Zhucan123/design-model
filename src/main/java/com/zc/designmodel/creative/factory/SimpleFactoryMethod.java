@@ -12,16 +12,16 @@ public class SimpleFactoryMethod {
      * description : 这个是多方法版本的 简单工厂方法模式
      * 没一个方法返回对应的对象
      */
-    public Sender getTencentSender(){
+    public Sender getTencentSender() {
         return new Tencent();
     }
 
-    public Sender getWechartSender(){
+    public Sender getWechartSender() {
         return new Wechart();
     }
 }
 
-class Tencent implements Sender{
+class Tencent implements Sender {
 
     @Override
     public void send() {
@@ -29,7 +29,7 @@ class Tencent implements Sender{
     }
 }
 
-class Wechart implements Sender{
+class Wechart implements Sender {
 
     @Override
     public void send() {
@@ -37,10 +37,10 @@ class Wechart implements Sender{
     }
 }
 
-class SimpleFactoryMethodTest{
+class SimpleFactoryMethodTest {
     //话说...就是传入一个或多个这个类型的数据,可以替换[]哈
-    public static void main(String... args){
-        SimpleFactoryMethod simpleFactoryMethod=new SimpleFactoryMethod();
+    public static void main(String... args) {
+        SimpleFactoryMethod simpleFactoryMethod = new SimpleFactoryMethod();
         simpleFactoryMethod.getTencentSender().send();
         simpleFactoryMethod.getWechartSender().send();
     }

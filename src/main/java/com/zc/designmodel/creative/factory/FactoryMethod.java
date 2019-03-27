@@ -1,5 +1,9 @@
 package com.zc.designmodel.creative.factory;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
+import java.util.HashMap;
+
 /**
  * Created by zhuCan
  * Project design-model.
@@ -17,14 +21,16 @@ public class FactoryMethod {
      */
 
 }
-class MailSender implements Sender{
+
+class MailSender implements Sender {
 
     @Override
     public void send() {
         System.err.println("发送邮件!");
     }
 }
-class SmsSender implements Sender{
+
+class SmsSender implements Sender {
 
     @Override
     public void send() {
@@ -32,12 +38,12 @@ class SmsSender implements Sender{
     }
 }
 
-interface Provider{
+interface Provider {
     Sender producer();
 }
 
 //工厂类
-class MailProducer implements Provider{
+class MailProducer implements Provider {
 
     @Override
     public Sender producer() {
@@ -46,19 +52,24 @@ class MailProducer implements Provider{
 }
 
 //工厂类
-class SmsProducer implements Provider{
+class SmsProducer implements Provider {
 
     @Override
     public Sender producer() {
-        return null;
+        return new SmsSender();
     }
 }
 
-class FactoryMethodTest{
-    public static void main(String ... args){
-        Provider provider=MailSender::new;
+class FactoryMethodTest {
+    public static void main(String... args) {
+        //java8 lambda
+        Provider provider = MailSender::new;
         provider.producer().send();
-        provider=SmsSender::new;
+        provider = SmsSender::new;
         provider.producer().send();
+        provider = new SmsProducer();
+        provider.producer().send();
+
+
     }
 }

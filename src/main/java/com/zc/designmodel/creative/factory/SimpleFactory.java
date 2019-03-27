@@ -12,21 +12,22 @@ public class SimpleFactory {
      * description : 简单工厂方法模式   单方法普通版
      * 这个版本会导致传入的参数不对获取不到对应的对象
      */
-    public Sender getSender(String type){
-        if ("email".equals(type)){
+    public Sender getSender(String type) {
+        if ("email".equals(type)) {
             return new Email();
-        }else if ("sms".equals(type)){
+        } else if ("sms".equals(type)) {
             return new Sms();
-        }else{
+        } else {
             return null;
         }
     }
 }
-interface Sender{
+
+interface Sender {
     void send();
 }
 
-class Email implements Sender{
+class Email implements Sender {
 
     @Override
     public void send() {
@@ -34,7 +35,7 @@ class Email implements Sender{
     }
 }
 
-class Sms implements Sender{
+class Sms implements Sender {
 
     @Override
     public void send() {
@@ -42,14 +43,14 @@ class Sms implements Sender{
     }
 }
 
-class SimpleFactoryTest{
-    public static void main(String[] args){
-        SimpleFactory simpleFactory=new SimpleFactory();
-        Sender sender=simpleFactory.getSender("sms");
+class SimpleFactoryTest {
+    public static void main(String[] args) {
+        SimpleFactory simpleFactory = new SimpleFactory();
+        Sender sender = simpleFactory.getSender("sms");
         sender.send();
-        sender=simpleFactory.getSender("email");
+        sender = simpleFactory.getSender("email");
         sender.send();
-        sender=simpleFactory.getSender("qq");
+        sender = simpleFactory.getSender("qq");
         sender.send();
 
     }

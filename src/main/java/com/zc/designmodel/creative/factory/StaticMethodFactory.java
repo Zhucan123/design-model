@@ -12,15 +12,16 @@ public class StaticMethodFactory {
      * description : 静态工厂方法模式
      * 在多方法工厂模式基础上, 把方法 改成静态就不用创建对象了
      */
-    public static Sender getComputerSender(){
+    public static Sender getComputerSender() {
         return new Computer();
     }
-    public static Sender getCellphoneSender(){
+
+    public static Sender getCellphoneSender() {
         return new Cellphone();
     }
 }
 
-class Computer implements Sender{
+class Computer implements Sender {
 
     @Override
     public void send() {
@@ -28,7 +29,7 @@ class Computer implements Sender{
     }
 }
 
-class Cellphone implements Sender{
+class Cellphone implements Sender {
 
     @Override
     public void send() {
@@ -36,8 +37,8 @@ class Cellphone implements Sender{
     }
 }
 
-class StaticMethodFactoryTest{
-    public static void main(String... args){
+class StaticMethodFactoryTest {
+    public static void main(String... args) {
         StaticMethodFactory.getCellphoneSender().send();
         StaticMethodFactory.getComputerSender().send();
     }
